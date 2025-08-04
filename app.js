@@ -16,7 +16,6 @@ function agregarAmigo() {
     listaAmigos.push(nombre); //Agregamos el nombre a la lista
 
     input.value = ""; // Limpiamos el input después de agregar
-
-
+    
 }
 
