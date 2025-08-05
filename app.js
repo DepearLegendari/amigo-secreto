@@ -5,7 +5,7 @@ let listaAmigos = []
 //Función para añadir un nombre a la lista
 function agregarAmigo() {
     const input = document.getElementById("amigo"); //Capturar el valor del campo de entrada
-    const nombre = input.ariaValueMax.trim(); //Guardamos el nombre que escribió el usuario
+    const nombre = input.value.trim(); //Guardamos el nombre que escribió el usuario
 
     //Validación de entrada
     if (nombre === "") {
@@ -26,8 +26,6 @@ function agregarAmigo() {
 // porque esta técnica es más segura, más limpia y evita problemas
 // con nombres que puedan incluir caracteres especiales o etiquetas inesperadas.
 // También es la práctica recomendada cuando se trabaja con elementos dinámicos en el DOM.
-
-
 function mostrarAmigos() {
     const lista = document.getElementById("listaAmigos"); //Capturamos el elemento de la lista
     lista.innerHTML = ""; //Limpiamos la lista antes de mostrar los amigos
@@ -38,4 +36,23 @@ function mostrarAmigos() {
         li.textContent = amigo; //Asignamos el nombre del amigo al contenido del <li>
         lista.appendChild(li); //Agregamos el <li> a la lista
     });
+}
+
+//función que seleccione de manera aleatoria uno de los nombres almacenados en el array amigos
+function sortearAmigo() {
+    const resultado = document.getElementById("resultado"); //Capturamos el elemento donde mostraremos el resultado
+    
+    //Validación para asegurarnos de que hay al menos 1 amigo en la lista
+    if (listaAmigos.length === 0) {
+        alert("¡No hay amigos en la lista para sortear!."); // Si la lista está vacía, mostramos un aviso
+        return; // Salimos de la función
+    }
+    //Generamos un Indice aleatorio 
+    const indice = Math.floor(Math.random() * listaAmigos.length); //Generamos un índice aleatorio
+    // Obtener el nombre sorteado
+    const nombreSorteado = listaAmigos[indice]; //Seleccionamos un amigo al azar
+    
+    // Mostramos el nombre del amigo sorteado
+    resultado.innerHTML = `<li>El amigo secreto es: ${nombreSorteado}</li>`; //Agregamos el nombre sorteado al resultado
+
 }
